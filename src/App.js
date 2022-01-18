@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
-import { Spinner } from 'reactstrap';
 import './app.scss';
 import Header from './components/Header';
 import NotFound from './components/NotFound';
