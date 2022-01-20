@@ -1,0 +1,5 @@
+.is-invalid {
+    & > div {
+        border-color: red;
+    }
+}

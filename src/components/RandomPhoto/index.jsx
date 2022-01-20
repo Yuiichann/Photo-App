@@ -5,6 +5,7 @@ import './RandomPhoto.scss';
 
 RandomPhoto.propTypes = {
     name: PropTypes.string,
+    classInValid: PropTypes.bool,
     imageUrl: PropTypes.string,
     onImageUrlChange: PropTypes.func,
     onRandomButtonBlur: PropTypes.func,
@@ -12,6 +13,7 @@ RandomPhoto.propTypes = {
 
 RandomPhoto.defaultProps = {
     name: '',
+    classInValid: false,
     imageUrl: '',
     onImageUrlChange: null,
     onRandomButtonBlur: null
@@ -24,7 +26,7 @@ const getRandomImageUrl = () => {
 
 function RandomPhoto(props) {
 
-    const { name, imageUrl, onImageUrlChange, onRandomButtonBlur } = props;
+    const { name, classInValid, imageUrl, onImageUrlChange, onRandomButtonBlur } = props;
     const handleRandomPhotoClick = async () => {
         if (onImageUrlChange) {
             const randomImageUrl = getRandomImageUrl();
@@ -33,7 +35,7 @@ function RandomPhoto(props) {
     }
 
     return (
-        <div className="random-photo">
+        <div className={`random-photo ${classInValid ? 'is-invalid' : ''}`}>
             <div className="random-photo__button">
                 <Button
                     outline
