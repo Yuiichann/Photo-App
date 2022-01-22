@@ -1,0 +1,12 @@
+.home {
+   &__group-link {
+       margin-top: 3rem;
+   }
+    &__link {
+        position: relative;
+        top: -5px;
+        text-decoration: none;
+        font-size: 1.4rem;
+        margin-left: 24px;
+    }
+}

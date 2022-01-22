@@ -11,11 +11,12 @@ function Header(props) {
             <Container>
                 <Row className="justify-content-between">
                     <Col xs="auto">
-                        <a
+                        <NavLink
                             className="header__link header__title"
+                            to='/home'
                         >
                             Photo App
-                        </a>
+                        </NavLink>
                     </Col>
 
                     <Col xs="auto">
@@ -25,7 +26,7 @@ function Header(props) {
                             to="/photos"
                             activeClassName="header__link--active"
                         >
-                            Redux Project
+                            <h4>Photo List</h4>
                         </NavLink>
                     </Col>
                 </Row>

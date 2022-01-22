@@ -11,20 +11,24 @@ import * as Yup from 'yup';
 
 
 PhotoForm.propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    isAddMode: PropTypes.bool
 };
 
 PhotoForm.defaultProps = {
-    onSubmit: null
+    onSubmit: null,
+    isAddMode: true,
 }
 
 function PhotoForm(props) {
 
-    const initialValues = {
-        title: ``, // using null or ``. If used undefine here => uncontrol components
-        category: null,
-        photo: ``
-    }
+    const { initialValues, onSubmit, isAddMode } = props;
+    
+    // const initialValues = {
+    //     title: ``, // using null or ``. If used undefine here => uncontrol components
+    //     category: null,
+    //     photo: ``
+    // }
 
     const validationSchema = Yup.object().shape({
         title: Yup.string().required('This field is required'),
@@ -48,7 +52,7 @@ function PhotoForm(props) {
 
             validationSchema={validationSchema}
 
-            onSubmit = {props.onSubmit}
+            onSubmit = {onSubmit}
         >
             {formikProps => {
                 // do something here
@@ -82,7 +86,7 @@ function PhotoForm(props) {
                         <FormGroup>
                             <Button type="submit" color="danger">
                                 {isSubmitting && <Spinner size="sm" />}
-                                Add to Album
+                                {isAddMode && `Add to Album` || `Save Change`}
                             </Button>
                         </FormGroup>
                     </Form>

@@ -5,22 +5,24 @@ import './Banner.scss';
 Banner.propTypes = {
     title: PropTypes.string,
     backgroundUrl: PropTypes.string,
+    styles: PropTypes.object
 };
 
 Banner.defaultProps = {
     title: '',
-    backgroundUrl: ''
+    backgroundUrl: '',
+    styles: {},
 }
 
 function Banner(props) {
 
-    const { title, backgroundUrl } = props;
+    const { title, backgroundUrl, styles } = props;
 
     const bannerStyle = backgroundUrl ? { backgroundImage: `url(${backgroundUrl})` } : { };
 
     return (
         <section className="banner" style={bannerStyle}>
-            <h1 className="banner__title">{title}</h1>
+            <h1 className="banner__title" style={styles} >{title}</h1>
         </section>
     );
 }
