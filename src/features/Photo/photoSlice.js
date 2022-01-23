@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const photoSaveLocal = JSON.parse(localStorage.getItem('photos')) ?? []
+const photoSaveLocal = JSON.parse(localStorage.getItem('photos-list')) ?? []
 
 const handleSavePhoto = (data) => {
-    localStorage.setItem('photos', JSON.stringify(data))
+    localStorage.setItem('photos-list', JSON.stringify(data))
 }
 
 const photo = createSlice({
@@ -11,15 +11,13 @@ const photo = createSlice({
     initialState: photoSaveLocal,
     reducers: {
         addPhoto: (state, action) => {
-            const newState = [...state]
-            newState.push(action.payload)
-            handleSavePhoto(newState);
-            return newState
-            // state.push(action.payload); //dont use return
+            state.push(action.payload); //dont use return
+            handleSavePhoto(state)
         },
         removePhoto: (state, action) => {
-            const removeName = action.payload
-            state = state.filter(photo => photo.title !== removeName)
+            const removeId = action.payload
+            state = state.filter(photo => photo.id !== removeId)
+            handleSavePhoto(state)
             return state;
         },
         updatePhoto: (state, action) => {
@@ -28,8 +26,10 @@ const photo = createSlice({
 
             if (photoIndex >= 0) {
                 state[photoIndex] = newPhoto;
+                handleSavePhoto(state)
             }
-        }
+        },
+
     }
 });
 

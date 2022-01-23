@@ -27,8 +27,8 @@ function MainPage(props) {
 
     const handlePhotoRemoveClick = photo => {
         console.log('Remove: ', photo);
-        const removeName = photo.title;
-        const action = removePhoto(removeName);
+        const removeId = photo.id;
+        const action = removePhoto(removeId);
         dispatch(action);
     }
 

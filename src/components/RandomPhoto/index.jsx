@@ -27,6 +27,7 @@ const getRandomImageUrl = () => {
 function RandomPhoto(props) {
 
     const { name, classInValid, imageUrl, onImageUrlChange, onRandomButtonBlur } = props;
+    
     const handleRandomPhotoClick = async () => {
         if (onImageUrlChange) {
             const randomImageUrl = getRandomImageUrl();
@@ -55,7 +56,7 @@ function RandomPhoto(props) {
                     <img 
                         src={imageUrl} 
                         alt="Oopss ... Not Found"
-                        onError={e => e.target.src = getRandomImageUrl()}
+                        onError={handleRandomPhotoClick}
                     /> 
                     : <h5>Random Picture Here !</h5>
                     
